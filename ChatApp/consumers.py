@@ -1,6 +1,4 @@
 import json
-
-from channels import DEFAULT_CHANNEL_LAYER
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
 from ChatApp.models import Room, Message
@@ -65,7 +63,7 @@ class NotificationConsumer(AsyncWebsocketConsumer):
         try:
             room = Room.objects.get(room_name=data['room_name'])
         except Room.DoesNotExist:
-            return  # Or log the issue
+            return  # Optional: log this issue
 
         if not Message.objects.filter(
             room=room,
