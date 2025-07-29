@@ -1,4 +1,5 @@
 import json
+from channels import DEFAULT_CHANNEL_LAYER
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
 from ChatApp.models import Room, Message
