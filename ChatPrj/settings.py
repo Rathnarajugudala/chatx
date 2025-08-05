@@ -4,7 +4,7 @@ import os
 # Build paths inside the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: keep the secret key used in production!
 SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-00soy%6)7n2zyfx6%tykreryl9enx)layd94v#g56!2k-s55=d")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -58,11 +58,10 @@ TEMPLATES = [
     },
 ]
 
-# WSGI and ASGI
 WSGI_APPLICATION = 'ChatPrj.wsgi.application'
 ASGI_APPLICATION = 'ChatPrj.asgi.application'
 
-# Channels Layer - Redis (production)
+# Channels + Redis
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
@@ -71,14 +70,6 @@ CHANNEL_LAYERS = {
         },
     },
 }
-
-# Uncomment this for local dev without Redis (not for production)
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels.layers.InMemoryChannelLayer"
-#     }
-# }
-
 # Database
 DATABASES = {
     'default': {
@@ -95,7 +86,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Localization
+# Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
@@ -107,7 +98,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CSRF Settings for Render
 CSRF_TRUSTED_ORIGINS = [
     "https://chatx-z905.onrender.com"
 ]
-
